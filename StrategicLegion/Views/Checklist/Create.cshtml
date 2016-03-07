@@ -1,0 +1,81 @@
+﻿@model StrategicLegion.Models.Checklist
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="text-center">
+            <h2>Create Checklist</h2>
+        </div>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.ChecklistName, new { htmlAttributes = new { @class = "form-control checklistNameTextBox", @placeholder = "Checklist Name" } })
+                @Html.ValidationMessageFor(model => model.ChecklistName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="NewChecklistDiv">
+            <div class="checklistGroupDiv">
+                <div class="checklistHeaderDiv">
+                    <label class="checklistHeaderLabel">
+                        Mission 1
+                    </label>
+                </div>
+                <div class="checklistItemDiv">
+                    <label class="checklistItemLabel">
+                        Objective 1
+                    </label>
+                </div>
+                <div class="checklistItemDiv">
+                    <label class="checklistItemLabel">
+                        Objective 2
+                    </label>
+                </div>
+            </div>
+            <div class="checklistGroupDiv">
+                <div class="checklistHeaderDiv">
+                    <label class="checklistHeaderLabel">
+                        Mission 2
+                    </label>
+                </div>
+                <div class="checklistItemDiv">
+                    <label class="checklistItemLabel">
+                        Objective 1
+                    </label>
+                </div>
+                <div class="checklistItemDiv">
+                    <label class="checklistItemLabel">
+                        Objective 2
+                    </label>
+                </div>
+            </div>
+        </div>
+
+                <div id="ChecklistFormDiv">
+                    @Html.Partial("_ChecklistGroup", Model)
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-center">
+                        <input type="submit" value="Create Checklist" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/ChecklistScripts.js")"></script>
+}
