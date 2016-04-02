@@ -1,6 +1,6 @@
 ﻿function addChecklistGroup(checklistGroupNumber) {
     //Find parent div of checklist
-    var Checklist = document.getElementById("NewChecklistDiv");
+    var Checklist = $('NewChecklistDiv');
 
     //Create div for the new group
     var newGroupDiv = document.createElement('div');
@@ -24,6 +24,16 @@
     Checklist.appendChild(newGroupDiv);
     newGroupDiv.appendChild(newHeaderDiv);
     newHeaderDiv.appendChild(newHeaderLabel);
+
+    //Add Delete header button beside label
+    var deleteHeaderButton = document.createElement('input');
+    deleteHeaderButton.setAttribute('type', 'button');
+    deleteHeaderButton.setAttribute('id', 'DeleteHeaderButton' + checklistGroupNumber);
+    deleteHeaderButton.setAttribute('value', 'x');
+    deleteHeaderButton.setAttribute('class', 'removeHeaderButton');
+    deleteHeaderButton.setAttribute('onclick', 'removeChecklistHeader(\'' + checklistGroupNumber + '\')');
+    newHeaderDiv.appendChild(deleteHeaderButton);
+
 
     //Create Div which will later hold checklist items for the group
     var groupItemsDiv = document.createElement('div');
@@ -81,4 +91,14 @@ function addChecklistItem(groupNumber) {
 
     //Clear item name textbox for next input
     itemNameTextbox.value = '';
+}
+
+function removeChecklistHeader(groupNumber) {
+    var groupDiv = document.getElementById('ChecklistGroupDiv' + groupNumber);
+    groupDiv.empty();
+    //for (var child in groupDiv.childNodes)
+     //   child.remove();
+    groupDiv.setAttribute('class', 'hidden');
+    groupDiv.setAttribute('id', '');
+    
 }

@@ -7,10 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StrategicLegion.Models;
+using StrategicLegion.Models.StrategyModels.ChecklistModels;
+using System.Web.Routing;
+using StrategicLegionDatabaseFacade.Presentation;
+using StrategicLegionDatabaseModels.Models.Checklists;
+using StrategicLegionDatabaseFacade.Communication;
 
 namespace StrategicLegion.Controllers.StrategyControllers
 {
-    public class ChecklistController : Controller
+    public class ChecklistController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -46,13 +51,25 @@ namespace StrategicLegion.Controllers.StrategyControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChecklistName")] Checklist checklist)
+        public ActionResult Create([Bind(Include = "ChecklistName, GroupCount")] Checklist checklist)
         {
             if (ModelState.IsValid)
             {
-                db.Checklists.Add(checklist);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                IDatabaseRequestsFacade database = new DatabaseRequestsFacade();
+
+                InsertChecklistEntry newChecklistModel = new InsertChecklistEntry();
+                newChecklistModel.ChecklistName = checklist.ChecklistName;
+            
+                ICommandResult result = database.Commands.InsertChecklistEntry(newChecklistModel);
+                int newId = (int)result.Parameters["@ChecklistId"].Value;
+                for (int currentGroup = 0; currentGroup < checklist.GroupCount; currentGroup++)
+                {
+                    InsertChecklistGroupEntry newChecklistGroupModel = new InsertChecklistGroupEntry();
+                    newChecklistGroupModel.ParentChecklistId = newId;
+                    database.Commands.InsertChecklistGroupEntry(newChecklistGroupModel);
+                }
+
+                return RedirectToAction("Create", "ChecklistGroup", new RouteValueDictionary(new { checklistId = newId }));
             }
 
             return View(checklist);

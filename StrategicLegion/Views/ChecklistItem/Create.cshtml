@@ -1,0 +1,43 @@
+﻿@model StrategicLegion.Models.StrategyModels.ChecklistModels.Checklist
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Model.ChecklistName</h2>
+@Html.HiddenFor(model => model.ChecklistId)
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @for (int groupIndex = 0; groupIndex < Model.ChecklistGroups.Count; groupIndex++)
+        {
+            @Model.ChecklistGroups[groupIndex].GroupName
+            @Html.HiddenFor(model => model.ChecklistGroups[groupIndex].ChecklistGroupId)
+            @Html.HiddenFor(model => model.ChecklistGroups[groupIndex].ItemCount)
+
+            for (int itemIndex = 0; itemIndex < Model.ChecklistGroups[groupIndex].ItemsInGroup.Count; itemIndex++)
+            {
+                @Html.HiddenFor(model => model.ChecklistGroups[groupIndex].ItemsInGroup[itemIndex].ChecklistItemId)
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">    
+                        @Html.LabelFor(model => model.ChecklistGroups[groupIndex].ItemsInGroup[itemIndex].ChecklistItemName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChecklistGroups[groupIndex].ItemsInGroup[itemIndex].ChecklistItemName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChecklistGroups[groupIndex].ItemsInGroup[itemIndex].ChecklistItemName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

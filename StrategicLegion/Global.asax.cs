@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategicLegion.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,9 @@ namespace StrategicLegion
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            MappingConfig.RegisterMaps();
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="afcba87f-ea0c-4f7a-a2b2-dfbb4276e35a" ChangeDateTime="03/11/2016 20:44:16">
+    <Property Name="ElementName" Value="[dbo].[Checklists].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Checklists]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChecklistId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8c987c09-b731-444b-aa83-02de9f352813" ChangeDateTime="03/11/2016 20:51:03">
+    <Property Name="ElementName" Value="[dbo].[ChecklistGroups].[GroupCount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistGroups]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GroupName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="647a475d-5ef5-4819-b5eb-8a6fbab3512e" ChangeDateTime="03/11/2016 20:58:01">
+    <Property Name="ElementName" Value="[dbo].[ChecklistItems].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChecklistItemId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fb55e1e2-a90c-4eba-a9d6-d596db9ad9fb" ChangeDateTime="03/11/2016 21:41:11">
+    <Property Name="ElementName" Value="[dbo].[UserSavedChecklistItems].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSavedChecklistItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserChecklistItemListId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e2e68c0a-9133-41b0-99a2-6f6a77f2a58c" ChangeDateTime="03/12/2016 00:59:02">
+    <Property Name="ElementName" Value="[dbo].[UserSavedChecklistItems].[UserChecklistItemListId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSavedChecklistItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserChecklistProgressListId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c441b892-0c7b-4833-84c4-7264f72dc4e3" ChangeDateTime="03/12/2016 02:01:31">
+    <Property Name="ElementName" Value="[dbo].[ChecklistProgressList].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistProgressList]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChecklistProgressListId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6b1cf0a5-bc27-4e66-b261-a33b6cf709d6" ChangeDateTime="03/12/2016 02:17:22">
+    <Property Name="ElementName" Value="[dbo].[UserSavedChecklistItems].[UserChecklistProgressListId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSavedChecklistItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserItemProgressEntryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f8c52985-1dd4-49c8-b315-459d5866e783" ChangeDateTime="03/12/2016 02:17:29">
+    <Property Name="ElementName" Value="[dbo].[UserSavedChecklistItems].[ChecklistProgressListId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserSavedChecklistItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChecklistItemId" />
+  </Operation>
+</Operations>

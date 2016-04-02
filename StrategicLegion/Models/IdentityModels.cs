@@ -30,7 +30,7 @@ namespace StrategicLegion.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<StrategicLegion.Models.Checklist> Checklists { get; set; }
+        public System.Data.Entity.DbSet<StrategicLegion.Models.StrategyModels.ChecklistModels.Checklist> Checklists { get; set; }
 
         public System.Data.Entity.DbSet<StrategicLegion.Models.StrategyModels.ChecklistModels.ChecklistGroup> ChecklistGroups { get; set; }
 
