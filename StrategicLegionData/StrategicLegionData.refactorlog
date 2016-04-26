@@ -56,4 +56,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ChecklistItemId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="249f653b-0aea-4fe7-9969-0672edfc683f" ChangeDateTime="04/09/2016 00:44:28">
+    <Property Name="ElementName" Value="[dbo].[Counters].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Counters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CounterId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="64e3977b-7e9e-4111-8d4f-af66741b1866" ChangeDateTime="04/09/2016 00:47:43">
+    <Property Name="ElementName" Value="[dbo].[Counters].[SubmitterId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Counters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubmitterName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b7015089-45e4-469d-b019-9c1d490c5b87" ChangeDateTime="04/09/2016 04:48:59">
+    <Property Name="ElementName" Value="[dbo].[Notepads].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Notepads]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotepadId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="604ac099-51a5-4982-8954-3e7bda29a335" ChangeDateTime="04/09/2016 04:49:28">
+    <Property Name="ElementName" Value="[dbo].[Notepads].[NotepadContent]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Notepads]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotepadName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="244240a7-52e7-4764-8bda-bfc7ace15873" ChangeDateTime="04/09/2016 05:14:11">
+    <Property Name="ElementName" Value="[dbo].[Images].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Images]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImageId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ca681a85-708f-406d-821f-bccebd03591d" ChangeDateTime="04/09/2016 05:43:53">
+    <Property Name="ElementName" Value="[WhiteboardSchema].[Whiteboards].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[WhiteboardSchema].[Whiteboards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WhiteboardId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0e8dd799-6e9f-4c65-a8ca-3523c1926bbf" ChangeDateTime="04/09/2016 05:47:15">
+    <Property Name="ElementName" Value="[WhiteboardSchema].[Whiteboards].[SubmitterName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[WhiteboardSchema].[Whiteboards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Submitter" />
+  </Operation>
 </Operations>

@@ -34,6 +34,22 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -78,13 +94,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Communication\Command.cs" />
     <Compile Include="Communication\CommandResult.cs" />
     <Compile Include="Communication\Commands\Checklists\InsertChecklistEntryCommand.cs" />
     <Compile Include="Communication\Commands\Checklists\InsertChecklistItemEntryCommand.cs" />
     <Compile Include="Communication\Commands\Checklists\InsertChecklistGroupEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Counters\DeleteCounterEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Counters\InsertCounterEntryCommand.cs" />
     <Compile Include="Communication\Commands\Checklists\UpdateChecklistGroupCommand.cs" />
     <Compile Include="Communication\Commands\Checklists\UpdateChecklistItemCommand.cs" />
+    <Compile Include="Communication\Commands\Counters\UpdateCounterEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Images\InsertImageEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Images\UpdateImageEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Notepads\DeleteNotepadEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Notepads\InsertNotepadEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Notepads\UpdateNotepadEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Whiteboards\DeleteWhiteboardEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Whiteboards\InsertWhiteboardEntryCommand.cs" />
+    <Compile Include="Communication\Commands\Whiteboards\UpdateWhiteboardEntryCommand.cs" />
     <Compile Include="Communication\DatabaseRequest.cs" />
     <Compile Include="Communication\ICommandResult.cs" />
     <Compile Include="Communication\IQueryResult.cs" />
@@ -96,12 +125,18 @@
     <Compile Include="Communication\Queries\Checklists\GetChecklistGroupEntryQuery.cs" />
     <Compile Include="Communication\Queries\Checklists\GetChecklistEntryQuery.cs" />
     <Compile Include="Communication\Queries\Checklists\GetChecklistGroupChildrenQuery.cs" />
+    <Compile Include="Communication\Queries\Counters\GetAllUserCountersQuery.cs" />
+    <Compile Include="Communication\Queries\Counters\GetCounterEntryQuery.cs" />
+    <Compile Include="Communication\Queries\Images\GetImageEntryQuery.cs" />
+    <Compile Include="Communication\Queries\Notepads\GetNotepadEntryQuery.cs" />
+    <Compile Include="Communication\Queries\Whiteboards\GetWhiteboardEntryQuery.cs" />
     <Compile Include="Communication\Query.cs" />
     <Compile Include="Communication\QueryResult.cs" />
     <Compile Include="Communication\QueryResultParser.cs" />
     <Compile Include="Communication\ResponseModels\Checklists\GetMultipleChecklistsResponseModel.cs" />
     <Compile Include="Communication\ResponseModels\Checklists\GetMultipleChecklistGroupsResponseModel.cs" />
     <Compile Include="Communication\ResponseModels\Checklists\GetMultipleChecklistItemsResponseModel.cs" />
+    <Compile Include="Communication\ResponseModels\Counters\GetAllUserCounterEntries.cs" />
     <Compile Include="Communication\SqlHelper.cs" />
     <Compile Include="DatabaseConstants.cs" />
     <Compile Include="Presentation\DatabaseRequestsFacade.cs" />
@@ -118,6 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Communication\ResponseModels\Notepads\" />
+    <Folder Include="Communication\ResponseModels\Whiteboards\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

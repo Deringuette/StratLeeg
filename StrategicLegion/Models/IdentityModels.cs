@@ -21,7 +21,7 @@ namespace StrategicLegion.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SLDevelopmentDatabase", throwIfV1Schema: false)
         {
         }
 
@@ -35,5 +35,7 @@ namespace StrategicLegion.Models
         public System.Data.Entity.DbSet<StrategicLegion.Models.StrategyModels.ChecklistModels.ChecklistGroup> ChecklistGroups { get; set; }
 
         public System.Data.Entity.DbSet<StrategicLegion.Models.StrategyModels.ChecklistModels.ChecklistItem> ChecklistItems { get; set; }
+
+        public System.Data.Entity.DbSet<StrategicLegion.Models.StrategyModels.NotepadStrategyModel> NotepadStrategyModels { get; set; }
     }
 }

@@ -4,7 +4,7 @@ AS
         SELECT
 		[ChecklistItems].[ChecklistItemId]	AS	[ChecklistItemId],
         [ChecklistItems].[ParentChecklistGroupId]	AS  [ParentChecklistGroupId],
-        [ChecklistItems].ChecklistItemName		AS  [ItemName]
+        [ChecklistItems].ChecklistItemName		AS  [ChecklistItemName]
 
         FROM [ChecklistSchema].[ChecklistItems] checklistItems
 		INNER JOIN [ChecklistSchema].[ChecklistGroups] checklistGroups

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategicLegionDatabaseFacade.Communication.Commands.Checklists
 {
-    class InsertChecklistGroupEntryCommand : Command
+    public class InsertChecklistGroupEntryCommand : Command
     {
         public InsertChecklistGroupEntryCommand()
             : base(DatabaseConstants.ChecklistGroups.InsertChecklistGroupEntry)

@@ -61,6 +61,18 @@
     <Folder Include="Checklists" />
     <Folder Include="Checklists\Tables" />
     <Folder Include="Checklists\StoredProcedures" />
+    <Folder Include="Counters" />
+    <Folder Include="Counters\Tables" />
+    <Folder Include="Counters\StoredProcedures" />
+    <Folder Include="Notepads" />
+    <Folder Include="Notepads\StoredProcedures" />
+    <Folder Include="Notepads\Tables" />
+    <Folder Include="Whiteboards" />
+    <Folder Include="Whiteboards\Tables" />
+    <Folder Include="Whiteboards\StoredProcedures" />
+    <Folder Include="Images" />
+    <Folder Include="Images\Tables" />
+    <Folder Include="Images\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Checklists\Tables\ChecklistGroups.sql" />
@@ -77,6 +89,31 @@
     <Build Include="Checklists\StoredProcedures\UpdateChecklistGroup.sql" />
     <Build Include="Checklists\StoredProcedures\GetChecklistEntry.sql" />
     <Build Include="Checklists\StoredProcedures\UpdateChecklistItem.sql" />
+    <Build Include="Checklists\StoredProcedures\GetAllChecklistEntries.sql" />
+    <Build Include="Counters\CounterSchema.sql" />
+    <Build Include="Counters\StoredProcedures\DeleteCounterEntry.sql" />
+    <Build Include="Counters\StoredProcedures\GetCounterEntry.sql" />
+    <Build Include="Counters\StoredProcedures\InsertCounterEntry.sql" />
+    <Build Include="Counters\StoredProcedures\UpdateCounterEntry.sql" />
+    <Build Include="Counters\Tables\Counters.sql" />
+    <Build Include="Images\StoredProcedures\DeleteImageEntry.sql" />
+    <Build Include="Images\StoredProcedures\GetImageEntry.sql" />
+    <Build Include="Images\StoredProcedures\InsertImageEntry.sql" />
+    <Build Include="Images\StoredProcedures\UpdateImageEntry.sql" />
+    <Build Include="Images\Tables\Images.sql" />
+    <Build Include="Images\ImageSchema.sql" />
+    <Build Include="Whiteboards\WhiteboardSchema.sql" />
+    <Build Include="Whiteboards\StoredProcedures\DeleteWhiteboardEntry.sql" />
+    <Build Include="Whiteboards\StoredProcedures\GetWhiteboardEntry.sql" />
+    <Build Include="Whiteboards\StoredProcedures\InsertWhiteboardEntry.sql" />
+    <Build Include="Whiteboards\StoredProcedures\UpdateWhiteboardEntry.sql" />
+    <Build Include="Whiteboards\Tables\Whiteboards.sql" />
+    <Build Include="Notepads\NotepadSchema.sql" />
+    <Build Include="Notepads\Tables\Notepads.sql" />
+    <Build Include="Notepads\StoredProcedures\DeleteNotepadEntry.sql" />
+    <Build Include="Notepads\StoredProcedures\GetNotepadEntry.sql" />
+    <Build Include="Notepads\StoredProcedures\InsertNotepadEntry.sql" />
+    <Build Include="Notepads\StoredProcedures\UpdateNotepadEntry.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StrategicLegionData.refactorlog" />

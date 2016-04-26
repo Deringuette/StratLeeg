@@ -9,5 +9,7 @@ namespace StrategicLegionDatabaseModels.Models.Checklists
     public class InsertChecklistEntry : IDatabaseModel
     {
         public String ChecklistName { get; set; }
+
+        public String Submitter { get; set; }
     }
 }

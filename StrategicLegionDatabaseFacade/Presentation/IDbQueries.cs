@@ -1,10 +1,9 @@
 ﻿using StrategicLegionDatabaseFacade.Communication.ResponseModels.Checklists;
 using StrategicLegionDatabaseModels.Models.Checklists;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StrategicLegionDatabaseModels.Models.Counters;
+using StrategicLegionDatabaseModels.Models.Images;
+using StrategicLegionDatabaseModels.Models.Notepads;
+using StrategicLegionDatabaseModels.Models.Whiteboards;
 
 namespace StrategicLegionDatabaseFacade.Presentation
 {
@@ -21,5 +20,13 @@ namespace StrategicLegionDatabaseFacade.Presentation
         GetMultipleChecklistItemsResponseModel GetChecklistGroupChildrenQuery(int checklistGroupId);
 
         GetChecklistItemEntry GetChecklistItemEntry(int checklistItemEntryId);
+
+        GetCounterEntry GetCounterEntry(int counterId);
+
+        GetImageEntry GetImageEntry(int imageId);
+
+        GetWhiteboardEntry GetWhiteboardEntry(int whiteboardId);
+
+        GetNotepadEntry GetNotepadEntry(int notepadId);
     }
 }

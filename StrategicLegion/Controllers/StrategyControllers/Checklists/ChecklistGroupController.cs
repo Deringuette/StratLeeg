@@ -13,18 +13,14 @@ using StrategicLegionDatabaseModels.Models.Checklists;
 using StrategicLegionDatabaseFacade.Communication.ResponseModels.Checklists;
 using System.Web.Routing;
 using StrategicLegionDatabaseFacade.Communication;
+using AutoMapper;
 
 namespace StrategicLegion.Controllers.StrategyControllers
 {
-    public class ChecklistGroupController : Controller
+    public class ChecklistGroupController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ChecklistGroups
-        public ActionResult Index()
-        {
-            return View(db.ChecklistGroups.ToList());
-        }
 
         // GET: ChecklistGroups/Details/5
         public ActionResult Details(int? id)
@@ -49,24 +45,18 @@ namespace StrategicLegion.Controllers.StrategyControllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            IDatabaseRequestsFacade database = new DatabaseRequestsFacade();
+            GetChecklistEntry checklistEntry = DatabaseRequestsFacade.Queries.GetChecklistEntry((int)checklistId);
+            GetMultipleChecklistGroupsResponseModel checklistGroupEntries = DatabaseRequestsFacade.Queries.GetChecklistChildrenQuery((int)checklistId);
 
-            GetChecklistEntry checklistEntry = database.Queries.GetChecklistEntry((int)checklistId);
-            GetMultipleChecklistGroupsResponseModel checklistGroupEntries = database.Queries.GetChecklistChildrenQuery((int)checklistId);
-
-            Checklist checklist = new Checklist();
-            checklist.ChecklistName = checklistEntry.ChecklistName;
-            checklist.ChecklistId = checklistEntry.ChecklistId;
+            Mapper.CreateMap<GetChecklistEntry, Checklist>();
+            Checklist checklist = Mapper.Map<Checklist>(checklistEntry);
 
             foreach (GetChecklistGroupEntry currentGroup in checklistGroupEntries.ChecklistGroupEntries) {
-                ChecklistGroup newChecklistGroup = new ChecklistGroup();
-                newChecklistGroup.ChecklistGroupId = currentGroup.ChecklistGroupId;
-                newChecklistGroup.ParentChecklistId = currentGroup.ParentChecklistId;
-                newChecklistGroup.GroupName = currentGroup.GroupName;
+
+                Mapper.CreateMap<GetChecklistGroupEntry, ChecklistGroup>();
+                ChecklistGroup newChecklistGroup = Mapper.Map<ChecklistGroup>(currentGroup);
                 checklist.ChecklistGroups.Add(newChecklistGroup);
             }
-
-            //checklist.ChecklistGroups = AutoMapper.Mapper.Map<IList<GetChecklistGroupEntry>, IList<ChecklistGroup>>(checklistGroupEntries.ChecklistGroupEntries);
 
             if (checklist == null)
             {
@@ -85,21 +75,19 @@ namespace StrategicLegion.Controllers.StrategyControllers
         {
             if (ModelState.IsValid)
             {
-                IDatabaseRequestsFacade database = new DatabaseRequestsFacade();
-
                 foreach (ChecklistGroup currentGroup in checklist.ChecklistGroups)
                 {
                     UpdateChecklistGroupEntry updateChecklistGroup = new UpdateChecklistGroupEntry();
                     updateChecklistGroup.ChecklistGroupId = currentGroup.ChecklistGroupId;
                     updateChecklistGroup.GroupName = currentGroup.GroupName;
 
-                    ICommandResult result = database.Commands.UpdateChecklistGroupEntry(updateChecklistGroup);
+                    ICommandResult result = DatabaseRequestsFacade.Commands.UpdateChecklistGroupEntry(updateChecklistGroup);
                     int newGroupId = (int)result.Parameters["@ChecklistGroupId"].Value;
                     for (int currentItem = 0; currentItem < currentGroup.ItemCount; currentItem++)
                     {
                         InsertChecklistItemEntry newChecklistItemModel = new InsertChecklistItemEntry();
                         newChecklistItemModel.ParentChecklistGroupId = newGroupId;
-                        database.Commands.InsertChecklistItemEntry(newChecklistItemModel);
+                        DatabaseRequestsFacade.Commands.InsertChecklistItemEntry(newChecklistItemModel);
                     }
                 }
                 return RedirectToAction("Create", "ChecklistItem", new RouteValueDictionary(new { checklistId = checklist.ChecklistId }));

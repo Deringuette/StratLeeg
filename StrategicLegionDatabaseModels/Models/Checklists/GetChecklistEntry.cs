@@ -11,5 +11,9 @@ namespace StrategicLegionDatabaseModels.Models.Checklists
         public int ChecklistId { get; set; }
 
         public string ChecklistName { get; set; }
+
+        public DateTime DateSubmitted { get; set; }
+
+        public string Submitter { get; set; }
     }
 }

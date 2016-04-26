@@ -23,7 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-a { color: #c8c8c8; text-decoration: underline; }
+a { color: #c8c8c8;}
 
 
 a:hover { color: #1c1c1c; text-decoration: underline; }
@@ -43,6 +43,16 @@ a:hover { color: #1c1c1c; text-decoration: underline; }
     text-transform: uppercase; 
 }
 
+.submitterLabel{ 
+    color: #000000; 
+    font-family: 'Raleway',sans-serif; 
+    font-size: 62px; 
+    font-weight: 800; 
+    line-height: 72px; 
+    margin: 0 0 24px; 
+    text-align: center; 
+    text-transform: uppercase; 
+}
 /*
     *********Checklist Styles*********
 */
@@ -81,7 +91,7 @@ a:hover { color: #1c1c1c; text-decoration: underline; }
     padding-right:20px;
     float: left;
     font-size: 28px;
-    font-weight:1000;
+    font-weight:900;
 }
 
 .newChecklistHeaderTextbox{ 

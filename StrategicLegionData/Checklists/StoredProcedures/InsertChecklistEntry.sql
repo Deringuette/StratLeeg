@@ -1,12 +1,17 @@
 ﻿CREATE PROCEDURE [ChecklistSchema].[InsertChecklistEntry]
 	@ChecklistName nvarchar(25),
+	@Submitter nvarchar(25),
 	@ChecklistId int OUTPUT
 AS
 	INSERT INTO [ChecklistSchema].[Checklists](
-		ChecklistName
+		ChecklistName,
+		DateSubmitted,
+		Submitter
 	)
 	VALUES(
-		@ChecklistName
+		@ChecklistName,
+		CURRENT_TIMESTAMP,
+		@Submitter
 	)
 	SET @ChecklistId = SCOPE_IDENTITY()
 RETURN  @ChecklistId

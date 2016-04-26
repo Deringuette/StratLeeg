@@ -15,6 +15,7 @@ namespace StrategicLegion
         {
             AreaRegistration.RegisterAllAreas();
 
+            Bootstrapper.Initialise();
             MappingConfig.RegisterMaps();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

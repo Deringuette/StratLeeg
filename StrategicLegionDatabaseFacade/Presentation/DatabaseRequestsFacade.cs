@@ -11,6 +11,18 @@ using StrategicLegionDatabaseFacade.Communication.ResponseModels.Checklists;
 using StrategicLegionDatabaseModels.Models.Checklists;
 using System.Configuration;
 using StrategicLegionDatabaseFacade.Communication.Commands.Checklists;
+using StrategicLegionDatabaseModels.Models.Counters;
+using StrategicLegionDatabaseModels.Models.Images;
+using StrategicLegionDatabaseModels.Models.Notepads;
+using StrategicLegionDatabaseModels.Models.Whiteboards;
+using StrategicLegionDatabaseFacade.Communication.Commands.Notepads;
+using StrategicLegionDatabaseFacade.Communication.Commands.Whiteboards;
+using StrategicLegionDatabaseFacade.Communication.Commands.Images;
+using StrategicLegionDatabaseFacade.Communication.Commands.Counters;
+using StrategicLegionDatabaseFacade.Communication.Queries.Counters;
+using StrategicLegionDatabaseFacade.Communication.Queries.Images;
+using StrategicLegionDatabaseFacade.Communication.Queries.Whiteboards;
+using StrategicLegionDatabaseFacade.Communication.Queries.Notepads;
 
 namespace StrategicLegionDatabaseFacade.Presentation
 {
@@ -133,6 +145,113 @@ namespace StrategicLegionDatabaseFacade.Presentation
                 UpdateChecklistItemCommand.BuildParamsRequest(updateChecklistItemEntry);
 
                 return Container.SqlHelper.SendCommand(UpdateChecklistItemCommand);
+            }
+
+
+            //Counters
+            public ICommandResult InsertCounterEntry(InsertCounterEntry insertCounterEntry)
+            {
+                var insertCounterEntryCommand = new InsertCounterEntryCommand();
+                insertCounterEntryCommand.BuildParamsRequest(insertCounterEntry);
+                insertCounterEntryCommand.AddOutputParameter("@CounterId", SqlDbType.Int);
+
+                return Container.SqlHelper.SendCommand(insertCounterEntryCommand);
+            }
+
+            public ICommandResult UpdateCounterEntry(UpdateCounterEntry updateCounterEntry)
+            {
+                var UpdateCounterEntryCommand = new UpdateCounterEntryCommand();
+
+                UpdateCounterEntryCommand.BuildParamsRequest(updateCounterEntry);
+
+                return Container.SqlHelper.SendCommand(UpdateCounterEntryCommand);
+            }
+
+            public ICommandResult DeleteCounterEntry(DeleteCounterEntry deleteCounterEntry)
+            {
+                var DeleteCounterEntryCommand = new DeleteCounterEntryCommand();
+
+                DeleteCounterEntryCommand.BuildParamsRequest(deleteCounterEntry);
+
+                return Container.SqlHelper.SendCommand(DeleteCounterEntryCommand);
+            }
+
+
+            //Whiteboards
+            public ICommandResult InsertWhiteboardEntry(InsertWhiteboardEntry insertWhiteboardEntry)
+            {
+                var insertWhiteboardEntryCommand = new InsertWhiteboardEntryCommand();
+                insertWhiteboardEntryCommand.BuildParamsRequest(insertWhiteboardEntry);
+                insertWhiteboardEntryCommand.AddOutputParameter("@WhiteboardId", SqlDbType.Int);
+
+                return Container.SqlHelper.SendCommand(insertWhiteboardEntryCommand);
+            }
+
+            public ICommandResult UpdateWhiteboardEntry(UpdateWhiteboardEntry updateWhiteboardEntry)
+            {
+                var UpdateWhiteboardCommand = new UpdateWhiteboardEntryCommand();
+
+                UpdateWhiteboardCommand.BuildParamsRequest(updateWhiteboardEntry);
+
+                return Container.SqlHelper.SendCommand(UpdateWhiteboardCommand);
+            }
+
+            public ICommandResult DeleteWhiteboardEntry(DeleteWhiteboardEntry deleteWhiteboardEntry)
+            {
+                var DeleteWhiteboardCommand = new DeleteWhiteboardEntryCommand();
+
+                DeleteWhiteboardCommand.BuildParamsRequest(deleteWhiteboardEntry);
+
+                return Container.SqlHelper.SendCommand(DeleteWhiteboardCommand);
+            }
+
+
+            //Notepads
+            public ICommandResult InsertNotepadEntry(InsertNotepadEntry insertNotepadEntry)
+            {
+                var insertNotepadEntryCommand = new InsertNotepadEntryCommand();
+                insertNotepadEntryCommand.BuildParamsRequest(insertNotepadEntry);
+                insertNotepadEntryCommand.AddOutputParameter("@NotepadId", SqlDbType.Int);
+
+                return Container.SqlHelper.SendCommand(insertNotepadEntryCommand);
+            }
+
+            public ICommandResult UpdateNotepadEntry(UpdateNotepadEntry updateNotepadEntry)
+            {
+                var UpdateNotepadCommand = new UpdateNotepadEntryCommand();
+
+                UpdateNotepadCommand.BuildParamsRequest(updateNotepadEntry);
+
+                return Container.SqlHelper.SendCommand(UpdateNotepadCommand);
+            }
+
+            public ICommandResult DeleteNotepadEntry(DeleteNotepadEntry deleteNotepadEntry)
+            {
+                var DeleteNotepadCommand = new DeleteNotepadEntryCommand();
+
+                DeleteNotepadCommand.BuildParamsRequest(deleteNotepadEntry);
+
+                return Container.SqlHelper.SendCommand(DeleteNotepadCommand);
+            }
+
+
+            //Images
+            public ICommandResult InsertImageEntry(InsertImageEntry insertImageEntry)
+            {
+                var insertImageEntryCommand = new InsertImageEntryCommand();
+                insertImageEntryCommand.BuildParamsRequest(insertImageEntry);
+                insertImageEntryCommand.AddOutputParameter("@ImageId", SqlDbType.Int);
+
+                return Container.SqlHelper.SendCommand(insertImageEntryCommand);
+            }
+
+            public ICommandResult UpdateImageEntry(UpdateImageEntry updateImageEntry)
+            {
+                var UpdateImageEntryCommand = new UpdateImageEntryCommand();
+
+                UpdateImageEntryCommand.BuildParamsRequest(updateImageEntry);
+
+                return Container.SqlHelper.SendCommand(UpdateImageEntryCommand);
             }
         }
 
@@ -263,6 +382,58 @@ namespace StrategicLegionDatabaseFacade.Presentation
                             typeof(GetChecklistItemEntry));
 
                 return checklistItemEntryModel;
+            }
+
+            public GetCounterEntry GetCounterEntry(int counterId)
+            {
+                GetCounterEntryQuery getCounterEntryQuery = new GetCounterEntryQuery();
+
+                getCounterEntryQuery.AddParameter("CounterId", counterId);
+
+                QueryResult queryResult = Container.SqlHelper.SendQuery(getCounterEntryQuery);
+
+                GetCounterEntry counterEntryModel = (GetCounterEntry)Container.QueryResultParser.ParseSingleRecord(queryResult.Data, typeof(GetCounterEntry));
+
+                return counterEntryModel;
+            }
+
+            public GetImageEntry GetImageEntry(int imageId)
+            {
+                GetImageEntryQuery getImageEntryQuery = new GetImageEntryQuery();
+
+                getImageEntryQuery.AddParameter("ImageId", imageId);
+
+                QueryResult queryResult = Container.SqlHelper.SendQuery(getImageEntryQuery);
+
+                GetImageEntry imageEntryModel = (GetImageEntry)Container.QueryResultParser.ParseSingleRecord(queryResult.Data, typeof(GetImageEntry));
+
+                return imageEntryModel;
+            }
+
+            public GetWhiteboardEntry GetWhiteboardEntry(int whiteboardId)
+            {
+                GetWhiteboardEntryQuery getWhiteboardEntryQuery = new GetWhiteboardEntryQuery();
+
+                getWhiteboardEntryQuery.AddParameter("WhiteboardId", whiteboardId);
+
+                QueryResult queryResult = Container.SqlHelper.SendQuery(getWhiteboardEntryQuery);
+
+                GetWhiteboardEntry whiteboardEntryModel = (GetWhiteboardEntry)Container.QueryResultParser.ParseSingleRecord(queryResult.Data, typeof(GetWhiteboardEntry));
+
+                return whiteboardEntryModel;
+            }
+
+            public GetNotepadEntry GetNotepadEntry(int notepadId)
+            {
+                GetNotepadEntryQuery getNotepadEntryQuery = new GetNotepadEntryQuery();
+
+                getNotepadEntryQuery.AddParameter("NotepadId", notepadId);
+
+                QueryResult queryResult = Container.SqlHelper.SendQuery(getNotepadEntryQuery);
+
+                GetNotepadEntry notepadEntryModel = (GetNotepadEntry)Container.QueryResultParser.ParseSingleRecord(queryResult.Data, typeof(GetNotepadEntry));
+
+                return notepadEntryModel;
             }
         }
     }

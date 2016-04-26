@@ -1,0 +1,41 @@
+﻿@model StrategicLegion.Models.StrategyModels.ChecklistModels.Checklist
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="checklistNameDiv">
+    <label class="checklistNameLabel">
+        @Html.DisplayFor(model => model.ChecklistName)
+    </label>
+</div>
+<div class="checklistSubmitterDiv">
+    <label class="checklistSubmitterLabel">
+        Submitted By: @Html.DisplayFor(model => model.Submitter)
+    </label>
+</div>
+<hr />
+
+<div id="NewChecklistDiv" class="newChecklistDiv">
+    @foreach (var currentGroup in Model.ChecklistGroups)
+    {
+        <div class="checklistGroupDiv">
+            <div class="checklistHeaderDiv">
+                <label class="checklistHeaderLabel">
+                    @currentGroup.GroupName
+                </label>
+            </div>
+            <div class="checklistItemsDiv">
+                @foreach (var currentItem in currentGroup.ItemsInGroup)
+                {
+                    <div class="checklistItemDiv">
+                        <label class="checklistItemLabel">
+                            @currentItem.ChecklistItemName
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
